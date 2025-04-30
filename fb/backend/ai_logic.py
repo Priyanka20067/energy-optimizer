@@ -1,8 +1,6 @@
-# ai_logic.py
-import joblib
+import joblib # type: ignore
 import numpy as np
 
-# Load your saved AI model
 model = joblib.load('ai_model.pkl')
 
 def get_advice(ac, fan, light):
