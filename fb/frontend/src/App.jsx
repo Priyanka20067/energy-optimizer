@@ -1,30 +1,34 @@
-import { Routes, Route, Link } from 'react-router-dom';
-import Dashboard from './pages/Dashboard';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import AIAdviceForm from './pages/AIAdviceForm';
 import Login from './pages/Login';
-import { useContext } from 'react';
-import { AuthContext } from './context/AuthContext';
+import About from './pages/About';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
-  const { user } = useContext(AuthContext);
-
   return (
-    <div style={{ padding: '20px' }}>
-      <nav style={{ marginBottom: '20px' }}>
-        <Link to="/" style={{ marginRight: '10px' }}>🏠 Home</Link>
-        <Link to="/dashboard" style={{ marginRight: '10px' }}>⚡ Dashboard</Link>
-        <Link to="/login">🔐 Login</Link>
-      </nav>
-
+    <>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/dashboard"
-          element={user ? <Dashboard /> : <p style={{ padding: '20px' }}>❌ Please login to access Dashboard!</p>}
-        />
+        <Route path="/about" element={<About />} />
+        <Route path="/ai-advice" element={
+          <ProtectedRoute>
+            <AIAdviceForm />
+          </ProtectedRoute>
+        }/>
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }/>
       </Routes>
-    </div>
+      <Footer />
+    </>
   );
 }
 

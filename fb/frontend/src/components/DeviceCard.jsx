@@ -6,11 +6,7 @@ function DeviceCard({ device, usage }) {
   const toggleDevice = () => {
     setIsOn(prev => !prev);
   };
-  useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/advice')
-      .then(res => res.json())
-      .then(data => setSuggestions([data.advice]));
-  }, []);
+
   
 
   return (

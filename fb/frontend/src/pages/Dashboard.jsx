@@ -22,6 +22,20 @@ function Dashboard() {
       setLoading(false);
     });
   }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch("http://localhost:5000/api/usage")
+        .then(res => res.json())
+        .then(data => {
+          setUsage(data);
+          calculateTotalConsumption(data);
+          generateSuggestions(data);
+        });
+    }, 5000); // Refresh every 5 seconds
+  
+    return () => clearInterval(interval);
+  }, []);
+  
 
   const generateSuggestions = (data) => {
     const tips = [];
