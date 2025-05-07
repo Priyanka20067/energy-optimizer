@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DeviceCard from '../components/DeviceCard';
 import SuggestionBox from '../components/SuggestionBox';
 import EnergyChart from '../components/EnergyChart';
+import '../styles/Dashboard.css'; 
 
 function Dashboard() {
   const [usage, setUsage] = useState({});
@@ -22,6 +23,7 @@ function Dashboard() {
       setLoading(false);
     });
   }, []);
+  
   useEffect(() => {
     const interval = setInterval(() => {
       fetch("http://localhost:5000/api/usage")
@@ -36,7 +38,6 @@ function Dashboard() {
     return () => clearInterval(interval);
   }, []);
   
-
   const generateSuggestions = (data) => {
     const tips = [];
     if (data["AC"] > 3) tips.push("⚡ AC usage is high. Try reducing AC run time during day.");
@@ -63,59 +64,41 @@ function Dashboard() {
     return maxDevice || "None";
   };
 
-  if (loading) return <div style={{ padding: '20px', textAlign: 'center', fontSize: '1.2rem' }}>Loading Dashboard...</div>;
+  if (loading) return <div className="loading-container">Loading Dashboard...</div>;
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h1 style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '20px' }}>⚡ Smart Energy Usage Dashboard</h1>
+    <div className="dashboard-container">
+      <h1 className="dashboard-title">⚡ Smart Energy Usage Dashboard</h1>
 
       {/* Total Consumption Card */}
-      <div style={{
-        background: '#d4fc79',
-        backgroundImage: 'linear-gradient(0deg, #d4fc79 0%, #96e6a1 100%)',
-        padding: '20px',
-        borderRadius: '10px',
-        textAlign: 'center',
-        marginBottom: '30px'
-      }}>
-        <h2 style={{ margin: 0, fontSize: '2rem' }}>Total Consumption</h2>
-        <p style={{ fontSize: '1.5rem', marginTop: '10px' }}>{totalConsumption} kWh</p>
+      <div className="consumption-card">
+        <h2 className="consumption-title">Total Consumption</h2>
+        <p className="consumption-value">{totalConsumption} kWh</p>
       </div>
 
       {/* Device Usage Cards */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginBottom: '40px' }}>
+      <div className="device-grid">
         {Object.entries(usage).map(([device, kwh]) => (
           <DeviceCard key={device} device={device} usage={kwh} />
         ))}
       </div>
 
       {/* AI Suggestions Box */}
-      <div style={{
-        background: '#f0f8ff',
-        padding: '20px',
-        borderRadius: '10px',
-        marginBottom: '40px'
-      }}>
+      <div className="suggestions-container">
         <SuggestionBox suggestions={suggestions} />
       </div>
 
       {/* Weekly Energy Chart */}
-      <div style={{ marginBottom: '40px' }}>
+      <div className="chart-container">
         <EnergyChart data={weeklyData} />
       </div>
 
       {/* Daily Summary */}
-      <div style={{
-        marginTop: '20px',
-        background: '#ffe0e0',
-        padding: '20px',
-        borderRadius: '10px',
-        textAlign: 'center'
-      }}>
-        <h2>📝 Daily Summary</h2>
-        <ul style={{ listStyleType: 'none', padding: 0, fontSize: '1.2rem', color: '#444' }}>
+      <div className="summary-container">
+        <h2 className="summary-title">📝 Daily Summary</h2>
+        <ul className="summary-list">
           <li><strong>Total Usage Today:</strong> {weeklyData[6]?.usage || 0} kWh</li>
-          <li><strong>Highest Consuming Device:</strong> <span style={{ color: 'red' }}>{findHighestDevice(usage)}</span></li>
+          <li><strong>Highest Consuming Device:</strong> <span className="highlight-device">{findHighestDevice(usage)}</span></li>
         </ul>
       </div>
     </div>

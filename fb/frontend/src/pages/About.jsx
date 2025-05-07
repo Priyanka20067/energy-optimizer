@@ -1,22 +1,44 @@
 import React from 'react';
+import '../styles/About.css'; 
 
 const About = () => {
   return (
-    <div style={{ padding: '40px', maxWidth: '800px', margin: 'auto', fontFamily: 'Arial' }}>
-      <h2>🌱 About Smart Energy Optimizer</h2>
-      <p style={{ marginTop: '20px', lineHeight: '1.6' }}>
-        The Smart Energy Optimizer is a student-driven AI + IoT project developed as part of the Nan Mudhalvan Phase 2 initiative.
-        It focuses on promoting sustainable energy consumption in smart buildings by integrating:
+    <div className="about-container">
+      <h2 className="about-heading">
+        <span className="plant-emoji">🌱</span>
+        About Smart Energy Optimizer
+      </h2>
+      
+      <p className="about-description">
+        The Smart Energy Optimizer is a student-driven <span className="highlight">AI + IoT project</span> developed 
+        as part of the Nan Mudhalvan Phase 2 initiative. It focuses on promoting sustainable energy consumption 
+        in smart buildings by integrating:
       </p>
-      <ul style={{ marginTop: '15px', lineHeight: '1.8' }}>
-        <li>⚡ Real-time monitoring of energy usage</li>
-        <li>🧠 AI-powered suggestions for energy saving</li>
-        <li>📊 Dashboard with weekly usage analytics</li>
-        <li>🔌 Optional integration with IoT sensors</li>
+      
+      <ul className="feature-list">
+        <li>
+          <span className="emoji">⚡</span>
+          <span className="feature-text">Real-time monitoring of energy usage</span>
+        </li>
+        <li>
+          <span className="emoji">🧠</span>
+          <span className="feature-text">AI-powered suggestions for energy saving</span>
+        </li>
+        <li>
+          <span className="emoji">📊</span>
+          <span className="feature-text">Dashboard with weekly usage analytics</span>
+        </li>
+        <li>
+          <span className="emoji">🔌</span>
+          <span className="feature-text">Optional integration with IoT sensors</span>
+        </li>
       </ul>
-      <p style={{ marginTop: '20px' }}>
-        This project is built using React, Flask, and machine learning with an aim to help individuals and organizations
-        reduce power consumption and become more environmentally responsible.
+      
+      <p className="about-footer">
+        This project is built using <span className="highlight">React</span>, 
+        <span className="highlight"> Flask</span>, and <span className="highlight">machine learning</span> with 
+        an aim to help individuals and organizations reduce power consumption and become more 
+        environmentally responsible.
       </p>
     </div>
   );

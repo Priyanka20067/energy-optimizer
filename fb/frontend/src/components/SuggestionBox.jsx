@@ -1,14 +1,21 @@
 import React from 'react';
+import '../styles/Dashboard.css'; 
 
 function SuggestionBox({ suggestions }) {
   return (
-    <div style={{ marginTop: '20px', background: '#eee', padding: '15px', borderRadius: '8px' }}>
-      <h4>AI Suggestions</h4>
-      <ul>
-        {suggestions.map((s, index) => (
-          <li key={index}>{s}</li>
-        ))}
-      </ul>
+    <div className="suggestion-box">
+      <h2 className="suggestion-title">
+        <span className="suggestion-icon">💡</span> Energy Saving Tips
+      </h2>
+      {suggestions.length > 0 ? (
+        <ul className="suggestion-list">
+          {suggestions.map((tip, index) => (
+            <li key={index} className="suggestion-item">{tip}</li>
+          ))}
+        </ul>
+      ) : (
+        <p className="no-suggestions">No energy saving tips at the moment.</p>
+      )}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import '../styles/login.css';
 
 const Login = () => {
   const { login } = useAuth();
@@ -23,14 +24,52 @@ const Login = () => {
   };
 
   return (
-    <div style={{ padding: '30px', maxWidth: '400px', margin: 'auto' }}>
-      <h2>🔐 Login</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <input name="username" placeholder="Username" onChange={handleChange} required />
-        <input name="password" placeholder="Password" type="password" onChange={handleChange} required />
-        <button type="submit">Login</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-      </form>
+    <div className="login-wrapper">
+      <div className="login-container">
+        <div className="login-header">
+          <h2><span className="emoji">🔐</span> Energy Portal Login</h2>
+          <p>Access your energy dashboard</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="input-group">
+            <label htmlFor="username">Username</label>
+            <input 
+              id="username"
+              name="username" 
+              placeholder="Enter your username" 
+              onChange={handleChange} 
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input 
+              id="password"
+              name="password" 
+              placeholder="Enter your password" 
+              type="password" 
+              onChange={handleChange} 
+              required
+            />
+          </div>
+
+          {error && (
+            <div className="error-message">
+              {error}
+            </div>
+          )}
+
+          <button type="submit" className="submit-btn">
+            Sign In
+          </button>
+
+          <div className="footer-note">
+            <p>Part of the Energy Optimization Project</p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

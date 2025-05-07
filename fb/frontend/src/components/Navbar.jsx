@@ -23,7 +23,8 @@ const styles = {
     padding: '15px 30px',
     backgroundColor: '#2c3e50',
     color: '#fff',
-    fontFamily: 'Arial, sans-serif'
+    fontFamily: 'Arial, sans-serif',
+    margin:'0px',
   },
   logo: {
     fontSize: '1.5rem',
