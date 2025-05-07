@@ -1,39 +1,54 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-// Replace with your details
-const char* ssid = "YOUR_WIFI_NAME";
-const char* password = "YOUR_WIFI_PASSWORD";
-const char* serverName = "http://YOUR_PC_IP:5000/iotdata"; // Flask API
+const char* ssid = "YourSSID";
+const char* password = "YourPASS";
+const char* controlURL = "http://YOUR_PC_IP:5000/api/auto-control";
+
+// GPIO pins
+int fanPin = 5;
+int lightPin = 4;
+int acPin = 2;
 
 void setup() {
   Serial.begin(115200);
+  pinMode(fanPin, OUTPUT);
+  pinMode(lightPin, OUTPUT);
+  pinMode(acPin, OUTPUT);
+
   WiFi.begin(ssid, password);
-  while(WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
-    Serial.println("Connecting to WiFi...");
+    Serial.println("Connecting...");
   }
   Serial.println("WiFi Connected!");
 }
 
 void loop() {
-  float ac = random(25, 45) / 10.0;
-  float fan = random(10, 20) / 10.0;
-  float light = random(6, 15) / 10.0;
-
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
-    http.begin(serverName);
+    http.begin(controlURL);
     http.addHeader("Content-Type", "application/json");
 
-    String jsonData = "{\"ac\":" + String(ac, 2) + ",\"fan\":" + String(fan, 2) + ",\"light\":" + String(light, 2) + "}";
-    int httpResponseCode = http.POST(jsonData);
-    
-    Serial.println("Sent: " + jsonData);
-    Serial.println("Response: " + String(httpResponseCode));
+    String json = "{\"ac\": 3.2, \"fan\": 0.4, \"light\": 1.2}";
+    int res = http.POST(json);
+    if (res == 200) {
+      String response = http.getString();
+      Serial.println("Control: " + response);
+
+      // Parse manually (basic)
+      if (response.indexOf("\"fan\":\"off\"") != -1) digitalWrite(fanPin, LOW);
+      else digitalWrite(fanPin, HIGH);
+
+      if (response.indexOf("\"light\":\"off\"") != -1) digitalWrite(lightPin, LOW);
+      else digitalWrite(lightPin, HIGH);
+
+      if (response.indexOf("\"ac\":\"off\"") != -1) digitalWrite(acPin, LOW);
+      else digitalWrite(acPin, HIGH);
+    }
 
     http.end();
   }
 
-  delay(5000); // Every 5 sec
+  delay(5000); // Check every 5 seconds
 }
