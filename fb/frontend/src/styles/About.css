@@ -1,0 +1,81 @@
+/* About page styles */
+.about-container {
+    max-width: 800px;
+    margin:0 auto;
+    padding: 2.5rem;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 50px;
+  }
+  
+  .about-heading {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .about-heading .plant-emoji {
+    margin-right: 0.75rem;
+    font-size: 2.2rem;
+  }
+  
+  .about-description {
+    color: #34495e;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+  }
+  
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+  
+  .feature-list li {
+    padding: 0.6rem 0;
+    color: #34495e;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .feature-list li .emoji {
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+    min-width: 1.5rem;
+  }
+  
+  .feature-text {
+    flex: 1;
+  }
+  
+  .about-footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+    color: #34495e;
+    line-height: 1.7;
+    font-size: 1.05rem;
+  }
+  
+  .highlight {
+    color: #3498db;
+    font-weight: 600;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 1.5rem;
+      margin: 0 1rem;
+    }
+    
+    .about-heading {
+      font-size: 1.8rem;
+    }
+  }

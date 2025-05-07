@@ -1,0 +1,369 @@
+/* Dashboard.css - Smart Energy Dashboard Styles */
+
+/* Base styles */
+.dashboard-container {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #333;
+  }
+  
+  .loading-container {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #10b981;
+    font-weight: 500;
+  }
+  
+  /* Dashboard title */
+  .dashboard-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Total consumption card */
+  .consumption-card {
+    background: #d4fc79;
+    background-image: linear-gradient(0deg, #d4fc79 0%, #96e6a1 100%);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .consumption-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .consumption-title {
+    margin: 0;
+    font-size: 2rem;
+    color: #2c3e50;
+  }
+  
+  .consumption-value {
+    font-size: 2rem;
+    margin-top: 10px;
+    font-weight: 700;
+    color: #1e3a8a;
+  }
+  
+  /* Device cards grid */
+  .device-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  
+  /* Suggestions section */
+  .suggestions-container {
+    background: #f0f8ff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #10b981;
+  }
+  
+  /* Chart container */
+  .chart-container {
+    margin-bottom: 40px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Daily summary */
+  .summary-container {
+    margin-top: 30px;
+    background: #ffe0e0;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .summary-title {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+  }
+  
+  .summary-list {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.2rem;
+    color: #444;
+    line-height: 1.8;
+  }
+  
+  .highlight-device {
+    color: #e53e3e;
+    font-weight: 600;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .dashboard-title {
+      font-size: 2rem;
+    }
+    
+    .consumption-title {
+      font-size: 1.6rem;
+    }
+    
+    .consumption-value {
+      font-size: 1.6rem;
+    }
+    
+    .device-grid {
+      gap: 15px;
+    }
+    
+    .summary-list {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Animation for loading transitions */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .dashboard-container {
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  /* SuggestionBox.css - Styles for energy saving suggestions */
+
+.suggestion-box {
+    padding: 10px 5px;
+  }
+  
+  .suggestion-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  .suggestion-icon {
+    margin-right: 10px;
+    font-size: 1.6rem;
+  }
+  
+  .suggestion-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .suggestion-item {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: rgba(16, 185, 129, 0.1);
+    border-left: 4px solid #10b981;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  
+  .suggestion-item:hover {
+    transform: translateX(5px);
+    background-color: rgba(16, 185, 129, 0.15);
+  }
+  
+  .suggestion-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .no-suggestions {
+    color: #64748b;
+    font-style: italic;
+    padding: 15px;
+    text-align: center;
+    background-color: rgba(16, 185, 129, 0.05);
+    border-radius: 6px;
+  }
+  /* EnergyChart.css - Styles for the weekly energy chart */
+
+.energy-chart {
+    padding: 10px;
+  }
+  
+  .chart-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 25px;
+  }
+  
+  .chart-container {
+    display: flex;
+    height: 250px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+  
+  /* Y-axis styling */
+  .chart-y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 15px;
+    width: 70px;
+  }
+  
+  .y-axis-label {
+    font-size: 0.8rem;
+    color: #64748b;
+    height: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Bar chart styling */
+  .chart-bars {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100%;
+    position: relative;
+  }
+  
+  .chart-bars::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 1px,
+      transparent 20%
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .chart-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 14%;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .chart-bar {
+    width: 80%;
+    min-height: 5px;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s ease;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .low-usage {
+    background-color: #10b981;
+  }
+  
+  .medium-usage {
+    background-color: #f59e0b;
+  }
+  
+  .high-usage {
+    background-color: #ef4444;
+  }
+  
+  .usage-value {
+    position: absolute;
+    top: -25px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #4b5563;
+  }
+  
+  .day-label {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #4b5563;
+    font-weight: 500;
+  }
+  
+  /* Legend styling */
+  .chart-legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 20px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #4b5563;
+  }
+  
+  .legend-color {
+    width: 15px;
+    height: 15px;
+    margin-right: 6px;
+    border-radius: 3px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .chart-container {
+      height: 200px;
+    }
+    
+    .chart-y-axis {
+      width: 60px;
+    }
+    
+    .y-axis-label {
+      font-size: 0.7rem;
+    }
+    
+    .day-label {
+      font-size: 0.8rem;
+    }
+    
+    .chart-legend {
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+  
+  /* Animation */
+  @keyframes barGrow {
+    from { height: 0; }
+  }
+  
+  .chart-bar {
+    animation: barGrow 1s ease-out;
+  }
